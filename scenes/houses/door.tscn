@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://d0p71b5jer6wy"]
+
+[ext_resource type="Script" path="res://scenes/houses/door.gd" id="1_3khnt"]
+[ext_resource type="Texture2D" uid="uid://cj21r7umbws5c" path="res://assets/tilesets/Door (closed).png" id="1_ceukh"]
+[ext_resource type="Texture2D" uid="uid://b3f25l4lqrxeh" path="res://assets/tilesets/Door (open).png" id="2_6kshm"]
+[ext_resource type="PackedScene" uid="uid://mkbf88u30ghq" path="res://scenes/components/interactable_component.tscn" id="3_1457g"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mjd6s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ceukh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_6kshm")
+}],
+"loop": false,
+"name": &"open",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tjr20"]
+size = Vector2(18, 18.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mqv2x"]
+size = Vector2(12, 41)
+
+[node name="Door" type="StaticBody2D"]
+position = Vector2(0, 10)
+script = ExtResource("1_3khnt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -15)
+sprite_frames = SubResource("SpriteFrames_mjd6s")
+animation = &"open"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_tjr20")
+
+[node name="InteractableComponent" parent="." instance=ExtResource("3_1457g")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableComponent"]
+position = Vector2(0, -10.5)
+shape = SubResource("RectangleShape2D_mqv2x")
+debug_color = Color(0.97273, 0, 0.438999, 0.42)

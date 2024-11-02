@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dji78g74ra3eq"]
+
+[ext_resource type="TileSet" uid="uid://mjhnrosm4ye1" path="res://tilesets/building.tres" id="1_7twh5"]
+
+[node name="OldGreenHouse" type="Node2D"]
+
+[node name="HouseTilemap" type="Node2D" parent="."]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="HouseTilemap"]
+tile_map_data = PackedByteArray(0, 0, 0, 0, 253, 255, 0, 0, 14, 0, 15, 0, 0, 0, 0, 0, 255, 255, 1, 0, 0, 0, 0, 0, 2, 0)
+tile_set = ExtResource("1_7twh5")
